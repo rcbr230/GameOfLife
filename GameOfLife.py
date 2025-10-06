@@ -27,7 +27,7 @@ class GameOfLife:
         self.Root.after(self.PAUSE_TIME, self.GridUpdate)
         self.Root.mainloop()
 
-
+    # allow player to place dots.
     def OnClick(self, event):
         x = int(event.x/10)
         y = int(event.y/10)
@@ -53,7 +53,6 @@ class GameOfLife:
     # Rule 4: Any dead cell with exactly 3 live neighbors becomes alive, by reproduction
     
     # Each rule will return true if it's passed, false if it's failed.
-
     def CheckRules(self, x_pos:int, y_pos:int):
         num_neighbors = 0
         for i in range(x_pos-1, x_pos+2):
@@ -89,6 +88,7 @@ class GameOfLife:
                 if self.MainGrid[i][j] == 1:
                     self.canvas.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="white")
 
+    # pause and unpause the game when btn is clicked.
     def SwapPause(self):
         self.isPaused = not self.isPaused
         if not self.isPaused:
@@ -100,3 +100,4 @@ class GameOfLife:
         
 # start 
 GOL = GameOfLife()
+
